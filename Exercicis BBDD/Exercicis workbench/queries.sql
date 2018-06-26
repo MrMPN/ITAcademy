@@ -9,18 +9,21 @@ GROUP BY Origin;
 /*Query 3*/
 SELECT Origin, colYear, colMonth, AVG(ArrDelay)
 FROM usairlineflights.flights 
-GROUP BY Origin, colMonth;
+GROUP BY Origin, colMonth
+ORDER BY Origin,colYear,colMonth ASC;
 
 /*Query 4*/
 SELECT usairports.City, colYear, colMonth, AVG(ArrDelay)
 FROM usairlineflights.flights
 INNER JOIN usairports ON flights.Origin=usairports.IATA
-GROUP BY Origin, colMonth;
+GROUP BY Origin, colMonth
+ORDER BY Origin,colYear,colMonth ASC;
 
 /*Query 5*/
-SELECT carriers.Description, SUM(Cancelled)
+SELECT carriers.Description, COUNT(Cancelled)
 FROM usairlineflights.flights
 INNER JOIN carriers ON flights.UniqueCarrier=carriers.CarrierCode
+WHERE Cancelled=1
 GROUP BY UniqueCarrier
 ORDER BY SUM(Cancelled) DESC;
 
