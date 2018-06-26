@@ -1,5 +1,5 @@
 /*Query 1*/
-/*SELECT COUNT(*) FROM flights;*/
+SELECT COUNT(*) FROM flights;
 
 /*Query 2*/
 SELECT Origin, AVG(DepDelay), AVG(ArrDelay)

@@ -29,7 +29,7 @@ SET
   DepDelay = CASE WHEN @DepDelay NOT IN ('NA', 'NaN', '--') THEN @DepDelay END;
   
   
-  LOAD DATA LOCAL INFILE 'C:/Program Files/MySQL/MySQL Server 5.7/Uploads/USFlights/data/2000x2000.csv'
+LOAD DATA LOCAL INFILE 'C:/Program Files/MySQL/MySQL Server 5.7/Uploads/USFlights/data/2000x2000.csv'
 INTO TABLE flights 
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
