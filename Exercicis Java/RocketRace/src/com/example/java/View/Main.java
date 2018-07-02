@@ -2,23 +2,31 @@ package com.example.java.View;
 
 import com.example.java.Application.Controller;
 
-import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
         Controller controller = new Controller();
+        //Provem de crear dos coets nous, amb les potencies dels seus propulsors
+        //Si falla, imprimim el missatge
         try{
-            controller.createRocket("32WESSDS", 3);
-            controller.createRocket("LDSFJA32", 0);
+            controller.createRocket("32WESSDS", new int[] {20,30,50});
+            controller.createRocket("LDSFJA32", new int[] {10,25,50,70,20,5});
         }
         catch (Exception e){
             System.out.print(e.getMessage() + "\n");
         }
-        
+
+        //Intentem afegir un nou propulsor a un coet que especifiquem
+        //Si falla, imprimim el missatge
+//        try {
+//            controller.addEngine("32WESSDS", 100);
+//        } catch (Exception e) {
+//            System.out.print(e.getMessage() + "\n");
+//        }
+
         //Show current rocket info
         String results = controller.getCurrentInfo();
         System.out.println(results);
-
     }
 }
