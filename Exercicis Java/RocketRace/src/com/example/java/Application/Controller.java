@@ -12,30 +12,55 @@ public class Controller {
     private static List<Rocket> rockets = new ArrayList<>();
 
     //Metode per crear un nou coet amb la info donada
-    public void createRocket(String identifier, int[] listOfEnginePower) throws Exception {
-        Rocket rocket = new Rocket(identifier, listOfEnginePower);
+    public void createRocket(String identifier, int[] engineMaxPower) throws Exception {
+        Rocket rocket = new Rocket(identifier, engineMaxPower);
         rockets.add(rocket);
     }
 
-    public void addEngine(String identifier, int power) throws Exception {
+    private Rocket findRocketByIdentifier(String identifier) throws Exception{
         for (Rocket r : rockets) {
             if (r.getIdentifier().equals(identifier)) {
-                r.addEngine(power);
+                return r;
             }
+        }
+        throw new Exception("Rocket not found");
+    }
+
+    public void accelerateRocket(String identifier, int times) throws Exception{
+        Rocket rocket = findRocketByIdentifier(identifier);
+        for (int i =0; i < times; i++){
+            rocket.accelerate();
         }
     }
 
-    //Metode per convertir la info sobre els coets en una ArrayList<String>
+    public void brakeRocket(String identifier, int times) throws Exception{
+        Rocket rocket = findRocketByIdentifier(identifier);
+        for (int i =0; i < times; i++){
+            rocket.brake();
+        }
+    }
+
+    //Metode per retornar info sobre potencia maxima i numero de propulsors
     public String getCurrentInfo() {
         StringBuilder summaryLine = new StringBuilder();
         for (Rocket rocket : rockets) {
             summaryLine.append("Rocket " + rocket.getIdentifier());
             summaryLine.append(". Number of engines: " + rocket.getEngineAmount());
-            summaryLine.append(". Power of engines: " + rocket.getPowerOfEngines());
+            summaryLine.append(". Max power of engines: " + rocket.getMaxPowerOfEngines());
+            summaryLine.setLength(summaryLine.length() - 1);
             summaryLine.append("\n");
         }
         return summaryLine.toString();
     }
 
-
+    //Metode per retornar velocitat actual dels coets
+    public String getcurrentSpeed(){
+        StringBuilder summaryLine = new StringBuilder();
+        for (Rocket rocket: rockets){
+            summaryLine.append("Current Speed: " + rocket.getCurrentSpeed());
+            summaryLine.append("\n");
+        }
+        summaryLine.setLength(summaryLine.length() - 1);
+        return summaryLine.toString();
+    }
 }

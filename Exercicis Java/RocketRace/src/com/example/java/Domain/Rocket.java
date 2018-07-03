@@ -7,17 +7,12 @@ public class Rocket {
     private String identifier;
     private List<Engine> engines = new ArrayList<>();
 
-//    public Rocket(String identifier) throws Exception{
-//        if (identifier == null) throw new Exception("Rocket identifier is null");
-//        this.identifier = identifier;
-//    }
-
-    public Rocket(String identifier, int[] listOfEnginePower) throws Exception {
+    public Rocket(String identifier, int[] engineMaxPower) throws Exception {
         //Comprobacions respecte identifier i engineAmount, si fallen es llença error
         if (identifier == null) throw new Exception("Rocket identifier is null");
-        else if (listOfEnginePower.length < 1) throw new Exception("Number of engines must be at least 1");
+        else if (engineMaxPower.length < 1) throw new Exception("Number of engines must be at least 1");
         this.identifier = identifier;
-        for (int power: listOfEnginePower){
+        for (int power : engineMaxPower) {
             addEngine(power);
         }
     }
@@ -30,18 +25,38 @@ public class Rocket {
         return engines.size();
     }
 
-    public void addEngine(int power) throws Exception{
+    public void addEngine(int power) throws Exception {
         engines.add(new Engine(power));
     }
 
-    public String getPowerOfEngines(){
+    public String getMaxPowerOfEngines() {
         StringBuilder summaryPower = new StringBuilder();
-        boolean first = true;
-        for (Engine engine: engines){
-            if (first){first=false;}
-            else{summaryPower.append(",");}
-            summaryPower.append(engine.getPower());
+        for (Engine engine : engines) {
+            summaryPower.append(engine.getMaxPower() + ",");
         }
         return summaryPower.toString();
     }
+
+    public int getCurrentSpeed(){
+        int currentSpeed = 0;
+        for (Engine engine : engines){
+            currentSpeed+=engine.getPower();
+        }
+        return currentSpeed;
+    }
+
+    private void changeSpeed(int amount){
+        for (Engine engine : engines) {
+            engine.changePower(amount);
+        }
+    }
+
+    public void accelerate() {
+        changeSpeed(+10);
+    }
+
+    public void brake() {
+        changeSpeed(-10);
+    }
+
 }
