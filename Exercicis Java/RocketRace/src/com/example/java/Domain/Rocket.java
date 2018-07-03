@@ -1,15 +1,16 @@
 package com.example.java.Domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Rocket {
     private String identifier;
-    private ArrayList<Engine> Engines = new ArrayList<>();
+    private List<Engine> engines = new ArrayList<>();
 
-    public Rocket(String identifier) throws Exception{
-        if (identifier == null) throw new Exception("Rocket identifier is null");
-        this.identifier = identifier;
-    }
+//    public Rocket(String identifier) throws Exception{
+//        if (identifier == null) throw new Exception("Rocket identifier is null");
+//        this.identifier = identifier;
+//    }
 
     public Rocket(String identifier, int[] listOfEnginePower) throws Exception {
         //Comprobacions respecte identifier i engineAmount, si fallen es llença error
@@ -26,17 +27,17 @@ public class Rocket {
     }
 
     public int getEngineAmount() {
-        return Engines.size();
+        return engines.size();
     }
 
     public void addEngine(int power) throws Exception{
-        Engines.add(new Engine(power));
+        engines.add(new Engine(power));
     }
 
     public String getPowerOfEngines(){
         StringBuilder summaryPower = new StringBuilder();
         boolean first = true;
-        for (Engine engine: Engines){
+        for (Engine engine: engines){
             if (first){first=false;}
             else{summaryPower.append(",");}
             summaryPower.append(engine.getPower());

@@ -10,8 +10,8 @@ public class Main {
         //Provem de crear dos coets nous, amb les potencies dels seus propulsors
         //Si falla, imprimim el missatge
         try{
-            controller.createRocket("32WESSDS", new int[] {20,30,50});
-            controller.createRocket("LDSFJA32", new int[] {10,25,50,70,20,5});
+            controller.createRocket("32WESSDS", new int[] {10,30,80});
+            controller.createRocket("LDSFJA32", new int[] {30,40,50,50,30,10});
         }
         catch (Exception e){
             System.out.print(e.getMessage() + "\n");
