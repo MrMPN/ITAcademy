@@ -4,9 +4,9 @@ public class Engine {
     private int power;
     private int maxPower;
 
-    public Engine(int power) throws Exception {
-        if (power < 1) throw new Exception("Max power of the Engine must be higher than 0");
-        this.maxPower = power;
+    public Engine(int maxPower) throws Exception {
+        if (maxPower < 1) throw new Exception("Max power of the Engine must be higher than 0");
+        this.maxPower = maxPower;
     }
 
     public int getPower() {
@@ -19,10 +19,10 @@ public class Engine {
 
     public void changePower(int powerDifferential) {
         this.power += powerDifferential;
-        if (power < 0) {
-            power = 0;
-        } else if (power > maxPower) {
+        if (power > maxPower) {
             power = maxPower;
+        } else if (power < 0) {
+           power = 0;
         }
     }
 }

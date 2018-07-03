@@ -13,7 +13,7 @@ public class Rocket {
         else if (engineMaxPower.length < 1) throw new Exception("Number of engines must be at least 1");
         this.identifier = identifier;
         for (int power : engineMaxPower) {
-            addEngine(power);
+            engines.add(new Engine(power));
         }
     }
 
@@ -23,10 +23,6 @@ public class Rocket {
 
     public int getEngineAmount() {
         return engines.size();
-    }
-
-    public void addEngine(int power) throws Exception {
-        engines.add(new Engine(power));
     }
 
     public String getMaxPowerOfEngines() {
