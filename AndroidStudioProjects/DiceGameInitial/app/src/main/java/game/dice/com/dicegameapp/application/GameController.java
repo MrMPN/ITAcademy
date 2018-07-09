@@ -6,11 +6,19 @@ import game.dice.com.dicegameapp.domain.*;
 
 public class GameController {
 
+	//Sole instance of the Singleton
+	private static GameController soleInstance;
+
 	private Player player;
 
+	//Private constructor
+	private GameController() {}
 
-	public GameController() {
-
+	public static GameController getInstance(){
+		if (soleInstance == null){
+			soleInstance = new GameController();
+		}
+		return soleInstance;
 	}
 
 	public void createPlayer(String name) {

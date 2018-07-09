@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DiceGameApp</string>
+    <string name="register_as_a_player">Register as a Player!</string>
+    <string name="play">Play</string>
 </resources>
