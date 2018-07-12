@@ -4,6 +4,7 @@ import com.example.java.application.DecorationDTO;
 import com.example.java.application.FloristController;
 import com.example.java.application.FlowerDTO;
 import com.example.java.application.TreeDTO;
+import com.example.java.domain.Decoration;
 
 import java.util.List;
 
@@ -14,12 +15,12 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            controller.createFlorist("Pepita");
+            controller.createFlorist("Best Flowers in Town");
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            controller.addDecoration("wood", 12.4);
+            controller.addDecoration(Decoration.Material.PLASTIC, 12.4);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,6 +31,11 @@ public class Main {
         }
         try {
             controller.addTree(12.35, 20.0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            controller.addTree(8.50, 13.0);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,9 +53,10 @@ public class Main {
         List<FlowerDTO> flowerDTOS = controller.getAllFlowers();
         List<TreeDTO> treeDTOS = controller.getAllTrees();
 
-        String stock = "Arboles: " + treeDTOS.size() + "\n" +
-                "Flores: " + flowerDTOS.size() + "\n" +
-                "Decoraciones: " + decorationDTOS.size();
+        String stock = controller.getFloristName() + "\n" +
+                "Trees: " + treeDTOS.size() + "\n" +
+                "Flowers: " + flowerDTOS.size() + "\n" +
+                "Decorations: " + decorationDTOS.size();
         return stock;
     }
 }

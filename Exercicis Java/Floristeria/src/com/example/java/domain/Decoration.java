@@ -1,16 +1,18 @@
 package com.example.java.domain;
 
 public class Decoration extends Product {
-    private String material;
+    public enum Material {PLASTIC, WOOD;}
+    private Material material;
 
-    public Decoration(String material, double price) throws Exception {
+    public Decoration(Material material, double price) throws Exception {
         super(price);
         if (material == null) throw new Exception();
         this.material = material;
     }
 
-    public String getMaterial() {
+    public Material getMaterial() {
         return material;
     }
+
 
 }

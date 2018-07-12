@@ -19,4 +19,5 @@ public class FlowerDTO {
     public double getPrice() {
         return price;
     }
+
 }

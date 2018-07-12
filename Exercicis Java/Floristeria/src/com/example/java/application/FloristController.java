@@ -30,11 +30,10 @@ public class FloristController {
         repository.getFlorist().addProduct(tree);
     }
 
-    public void addDecoration(String material, double price) throws Exception {
+    public void addDecoration(Decoration.Material material, double price) throws Exception {
         Decoration decoration = new Decoration(material, price);
         repository.getFlorist().addProduct(decoration);
     }
-
 
     public List<TreeDTO> getAllTrees() throws Exception {
         List<TreeDTO> listTrees = new ArrayList<>();
@@ -67,6 +66,10 @@ public class FloristController {
             }
         }
         return listDecorations;
+    }
+
+    public String getFloristName() throws Exception{
+        return repository.getFlorist().getName();
     }
 
 

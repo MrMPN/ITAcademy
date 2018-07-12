@@ -3,7 +3,7 @@ package com.example.java.application;
 import com.example.java.domain.Decoration;
 
 public class DecorationDTO {
-    private String material;
+    private Decoration.Material material;
     private double price;
 
 
@@ -12,7 +12,7 @@ public class DecorationDTO {
         this.material = decoration.getMaterial();
     }
 
-    public String getMaterial() {
+    public Decoration.Material getMaterial() {
         return material;
     }
 

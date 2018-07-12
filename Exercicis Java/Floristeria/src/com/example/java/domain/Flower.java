@@ -12,4 +12,5 @@ public class Flower extends Product {
     public String getColour() {
         return colour;
     }
+
 }
