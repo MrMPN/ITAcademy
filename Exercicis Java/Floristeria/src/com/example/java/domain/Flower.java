@@ -5,7 +5,7 @@ public class Flower extends Product {
 
     public Flower(String colour, double price) throws Exception {
         super(price);
-        if (colour == null) throw new Exception();
+        if (colour.equals("")) throw new Exception();
         this.colour = colour;
     }
 

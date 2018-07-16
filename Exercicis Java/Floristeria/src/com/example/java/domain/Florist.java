@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Florist {
     private String name;
-    private List<Product> listProducts = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
     public Florist(String name) throws Exception {
-        if (name == null) throw new Exception();
+        if (name.equals("")) throw new Exception();
         this.name = name;
     }
 
@@ -16,11 +16,11 @@ public class Florist {
         return name;
     }
 
-    public List<Product> getListProducts() {
-        return listProducts;
+    public List<Product> getProducts() {
+        return new ArrayList<>(products);
     }
 
     public void addProduct(Product product){
-        listProducts.add(product);
+        products.add(product);
     }
 }

@@ -1,9 +1,9 @@
 package com.example.java.view;
 
-import com.example.java.application.DecorationDTO;
+import com.example.java.application.dto.DecorationDTO;
 import com.example.java.application.FloristController;
-import com.example.java.application.FlowerDTO;
-import com.example.java.application.TreeDTO;
+import com.example.java.application.dto.FlowerDTO;
+import com.example.java.application.dto.TreeDTO;
 import com.example.java.domain.Decoration;
 
 import java.util.List;

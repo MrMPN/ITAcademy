@@ -1,6 +1,9 @@
 package com.example.java.application;
 
 
+import com.example.java.application.dto.DecorationDTO;
+import com.example.java.application.dto.FlowerDTO;
+import com.example.java.application.dto.TreeDTO;
 import com.example.java.domain.*;
 import com.example.java.persistance.FloristRepository;
 
@@ -17,55 +20,61 @@ public class FloristController {
 
     public void createFlorist (String name) throws Exception {
         Florist florist = new Florist(name);
-        repository.setFlorist(florist);
+        repository.saveFlorist(florist);
     }
 
     public void addFlower(String colour, double price) throws Exception {
         Flower flower = new Flower(colour, price);
-        repository.getFlorist().addProduct(flower);
+        Florist florist = repository.getFlorist();
+        florist.addProduct(flower);
     }
 
     public void addTree(double height, double price) throws Exception {
         Tree tree = new Tree(height, price);
-        repository.getFlorist().addProduct(tree);
+        Florist florist = repository.getFlorist();
+        florist.addProduct(tree);
     }
 
     public void addDecoration(Decoration.Material material, double price) throws Exception {
         Decoration decoration = new Decoration(material, price);
-        repository.getFlorist().addProduct(decoration);
+        Florist florist = repository.getFlorist();
+        florist.addProduct(decoration);
     }
 
     public List<TreeDTO> getAllTrees() throws Exception {
-        List<TreeDTO> listTrees = new ArrayList<>();
-        List<Product> products = repository.getFlorist().getListProducts();
+        List<TreeDTO> trees = new ArrayList<>();
+        Florist florist = repository.getFlorist();
+        List<Product> products = florist.getProducts();
         for (Product p : products) {
             if(p instanceof Tree){
-                listTrees.add(new TreeDTO((Tree) p));
+                trees.add(new TreeDTO((Tree) p));
             }
         }
-        return listTrees;
+        return trees;
     }
 
     public List<FlowerDTO> getAllFlowers() throws Exception {
-        List<FlowerDTO> listFlowers = new ArrayList<>();
-        List<Product> products = repository.getFlorist().getListProducts();
+        List<FlowerDTO> flowers = new ArrayList<>();
+        Florist florist = repository.getFlorist();
+        List<Product> products = florist.getProducts();
         for (Product p : products) {
             if(p instanceof Flower){
-                listFlowers.add(new FlowerDTO((Flower) p));
+                flowers.add(new FlowerDTO((Flower) p));
             }
         }
-        return listFlowers;
+        return flowers;
     }
 
     public List<DecorationDTO> getAllDecorations() throws Exception {
-        List<DecorationDTO> listDecorations = new ArrayList<>();
-        List<Product> products = repository.getFlorist().getListProducts();
+        List<DecorationDTO> decorations = new ArrayList<>();
+        Florist florist = repository.getFlorist();
+        List<Product> products = florist.getProducts();
         for (Product p : products) {
             if(p instanceof Decoration){
-                listDecorations.add(new DecorationDTO((Decoration) p));
+                decorations.add(new DecorationDTO((Decoration) p));
             }
         }
-        return listDecorations;
+        return decorations;
     }
 
     public String getFloristName() throws Exception{

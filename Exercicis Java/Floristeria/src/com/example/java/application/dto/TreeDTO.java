@@ -1,4 +1,4 @@
-package com.example.java.application;
+package com.example.java.application.dto;
 
 import com.example.java.domain.Tree;
 

@@ -11,7 +11,8 @@ public class FloristRepository {
         return florist;
     }
 
-    public void setFlorist(Florist florist) {
+    public void saveFlorist(Florist florist) throws Exception {
+        if (florist == null)throw new Exception("Florist not created");
         this.florist = florist;
     }
 }
